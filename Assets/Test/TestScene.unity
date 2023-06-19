@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 262.38358, g: 325.10843, b: 430.30963, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -311,6 +311,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &195578220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195578214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 079394bb2a0191a418b15a54dae3b48a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthPoints: 0
 --- !u!1 &322249339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,6 +1258,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 195578219}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a6ee1210189de544ab5628c75663bc55,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 195578220}
   m_SourcePrefab: {fileID: 100100000, guid: a6ee1210189de544ab5628c75663bc55, type: 3}
 --- !u!1 &1267514304
 GameObject:
@@ -1560,11 +1577,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2097848718}
-  m_LocalRotation: {x: 0.39467776, y: -0.3893216, z: 0.005332107, w: 0.83224386}
+  m_LocalRotation: {x: 0.106160216, y: -0.5795358, z: 0.3252171, w: 0.7396636}
   m_LocalPosition: {x: 4.0424147, y: 3.67423, z: -3.1279671}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1.4594}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 41.383, y: -59.1, z: -23.438}
+  m_LocalEulerAnglesHint: {x: 32.276, y: -68.801, z: 25.055}

@@ -24,45 +24,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "MoveLeftKey",
-                    "type": "Button",
-                    "id": "ebe87645-b015-4722-9018-1fef6053f579",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "MoveRightKey",
-                    "type": "Button",
-                    "id": "284e1a64-dbe0-40aa-a282-b46627d2835f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "JumpKey",
-                    "type": "Button",
-                    "id": "bdeade6f-29de-4503-8e3b-b541bae9e859",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Attack",
                     "type": "Button",
                     "id": "ac460356-e45f-4aa1-8a33-07ef721e08ac",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "AttackKey",
-                    "type": "Button",
-                    "id": "c71b5d58-9aaa-46ef-966f-17b2b43e2282",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -83,6 +47,17 @@
                 },
                 {
                     "name": "",
+                    "id": "e81cfc3e-1d00-49fa-8585-13036e839cdd",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "7dce9d93-340d-4929-8a89-3a5ad169e518",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
@@ -93,37 +68,59 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "518fa127-e464-4af6-8660-b5a1e8d330b8",
-                    "path": "<Keyboard>/a",
+                    "name": "WASD",
+                    "id": "0663dc30-c411-4221-935d-78a64eeadf39",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MoveLeftKey",
-                    "isComposite": false,
+                    "action": "Move",
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "139c335f-e830-4b49-972b-3d7fb6d8e2a3",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveRightKey",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5c5f14ca-c34b-488c-9c55-19832c78ba30",
+                    "name": "up",
+                    "id": "34c06234-d469-469b-b99e-199df5704956",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "JumpKey",
+                    "action": "Move",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "522b8324-943e-4a7d-a95c-f2365c10f2f5",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "9a1d2c4a-b7a0-44db-9877-29b9d8f7cbfe",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "bba66cde-16d5-4212-9869-f13f14a80f32",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -138,12 +135,12 @@
                 },
                 {
                     "name": "",
-                    "id": "b35e3987-6198-4c7c-b915-e83a466b80ed",
+                    "id": "afdfaa15-9681-4b86-abaf-cdf2e820b5c4",
                     "path": "<Keyboard>/u",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AttackKey",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
