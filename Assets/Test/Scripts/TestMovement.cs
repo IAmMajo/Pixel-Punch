@@ -12,13 +12,13 @@ public class TestMovement : MonoBehaviour
     [SerializeField]
     Transform tr;
 
-    TestInput controls;
-    InputAction jumpAction;
-    InputAction moveAction;
-    InputAction basicAttackGamepad;
 
     [SerializeField]
     float moveSpeed;
+
+    private Vector2 movementInput;
+    private bool jumped;
+    private bool basicAttacked;
 
     [SerializeField]
     GameObject BASICATTACKOBJECT;
@@ -28,35 +28,44 @@ public class TestMovement : MonoBehaviour
     float jumpCount = 0;
     void Awake()
     {
-        controls = new TestInput();
-
-        jumpAction = controls.Gameplay.Jump;
-        moveAction = controls.Gameplay.Move;
-        basicAttackGamepad = controls.Gameplay.Attack;
     }
+
+    public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
+
+    public void OnJumped(InputAction.CallbackContext ctx) => jumped = true;
+
+    public void OnBasicAttack(InputAction.CallbackContext ctx) => basicAttacked = true;
+
 
     void Update()
     {
-        //checks if the jump button gets pressed and if you jumped less than two times, as you are not supossed to fly but a double jump is common for such games
-        if (jumpAction.triggered && jumpCount < 2)
+
+        //as the objects are supposed to only move along one axis, but the controller gives us values for two and the functions wants to have three some tricking is required
+        tr.Translate(new Vector3(0, 0, movementInput.x * -1f) * moveSpeed * Time.deltaTime, Space.Self);
+
+
+        if (jumped)
         {
             Jump();
-            jumpCount++;
+            jumped = false;
         }
-        //as the objects are supposed to only move along one axis, but the controller gives us values for two and the functions wants to have three some tricking is required
-        tr.Translate(new Vector3(0, 0, moveAction.ReadValue<Vector2>().x * -1f) * moveSpeed * Time.deltaTime, Space.Self);
 
-
-        if (basicAttackGamepad.triggered)
+        if (basicAttacked)
         {
             BasicAttackMethod();
+            basicAttacked = false;
         }
     }
 
     void Jump()
     {
-        //divison trough jumpcount to make second jump smaller
-        rg.AddForce(new Vector3(0, 10 / (jumpCount * 2 + 1), 0), ForceMode.Impulse);
+        if (jumpCount < 2)
+        {
+
+            //divison trough jumpcount to make second jump smaller
+            rg.AddForce(new Vector3(0, 10 / (jumpCount * 2 + 1), 0), ForceMode.Impulse);
+        }
+
     }
 
     void BasicAttackMethod()
@@ -71,16 +80,5 @@ public class TestMovement : MonoBehaviour
         {
             jumpCount = 0;
         }
-    }
-
-    //nessecary methods for using Input Actions
-    void OnEnable()
-    {
-        controls.Gameplay.Enable();
-    }
-
-    void OnDisable()
-    {
-        controls.Gameplay.Disable();
     }
 }

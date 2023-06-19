@@ -1,6 +1,11 @@
 How to make a Player Character:
 1.Add the TestMovement script (maybe that one sould be renamed because it not only for tests anymore)
 2.Add the Hitable script
+3.Add a Player Input component
+    1.Add the TestInput prefab in the actions field 
+    2.Go into the Events section 
+    3.Add the TestMovement component OF THIS OBJECT into the events under the gameplay extendable
+    4.Select the coresponding callback methods from the TestMovement
 3.Setting up the Attributes:
     1.Give the TestMovement the Rigidbody and Transform
     2.Choose a Movementspeed
