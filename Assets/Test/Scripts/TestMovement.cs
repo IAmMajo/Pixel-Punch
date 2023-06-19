@@ -18,9 +18,14 @@ public class TestMovement : MonoBehaviour
     InputAction moveLeftKey;
     InputAction moveRightKey;
     InputAction jumpKey;
+    InputAction basicAttackGamepad;
+    InputAction basicAttackKey;
 
     [SerializeField]
     float moveSpeed;
+
+    [SerializeField]
+    GameObject BASICATTACKOBJECT;
 
     float jumpCount = 0;
     void Awake()
@@ -29,10 +34,12 @@ public class TestMovement : MonoBehaviour
         //gamepad
         jumpGamepad = controls.Gameplay.Jump;
         moveGamepad = controls.Gameplay.Move;
+        basicAttackGamepad = controls.Gameplay.Attack;
         //keyboard
         moveLeftKey = controls.Gameplay.MoveLeftKey;
         moveRightKey = controls.Gameplay.MoveRightKey;
         jumpKey = controls.Gameplay.JumpKey;
+        basicAttackKey = controls.Gameplay.AttackKey;
     }
 
     void Update()
@@ -44,13 +51,19 @@ public class TestMovement : MonoBehaviour
             jumpCount++;
         }
         //as the objects are supposed to only move along one axis, but the controller gives us values for two and the functions wants to have three some tricking is required
-        Debug.Log(moveGamepad.ReadValue<Vector2>().x * -1f);
         tr.Translate(new Vector3(0, 0, moveGamepad.ReadValue<Vector2>().x * -1f) * moveSpeed * Time.deltaTime, Space.Self);
         if (moveLeftKey.IsPressed())
         {
             tr.Translate(new Vector3(0, 0, 1) * moveSpeed * Time.deltaTime, Space.Self);
-        }else if(moveRightKey.IsPressed()){
+        }
+        else if (moveRightKey.IsPressed())
+        {
             tr.Translate(new Vector3(0, 0, -1) * moveSpeed * Time.deltaTime, Space.Self);
+        }
+
+        if (basicAttackKey.triggered || basicAttackGamepad.triggered)
+        {
+            BasicAttackMethod();
         }
     }
 
@@ -58,6 +71,11 @@ public class TestMovement : MonoBehaviour
     {
         //divison trough jumpcount to make second jump smaller
         rg.AddForce(new Vector3(0, 10 / (jumpCount * 2 + 1), 0), ForceMode.Impulse);
+    }
+
+    void BasicAttackMethod()
+    {
+        Instantiate(BASICATTACKOBJECT, tr.transform);
     }
 
     void OnCollisionEnter(Collision e)

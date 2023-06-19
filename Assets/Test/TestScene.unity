@@ -266,6 +266,8 @@ MonoBehaviour:
   rg: {fileID: 195578217}
   tr: {fileID: 195578215}
   moveSpeed: 2
+  basicAttack: {fileID: 7921903569181277439, guid: 1b021db8a4031964e9c505a85bf1a103,
+    type: 3}
 --- !u!23 &195578219
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -775,6 +777,7 @@ GameObject:
   - component: {fileID: 835854500}
   - component: {fileID: 835854499}
   - component: {fileID: 835854498}
+  - component: {fileID: 835854503}
   m_Layer: 0
   m_Name: Testplayer
   m_TagString: Untagged
@@ -897,6 +900,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &835854503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835854497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 079394bb2a0191a418b15a54dae3b48a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthPoints: 10
 --- !u!1 &850848025
 GameObject:
   m_ObjectHideFlags: 0

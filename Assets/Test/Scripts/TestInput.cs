@@ -71,6 +71,24 @@ public partial class @TestInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""ac460356-e45f-4aa1-8a33-07ef721e08ac"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AttackKey"",
+                    ""type"": ""Button"",
+                    ""id"": ""c71b5d58-9aaa-46ef-966f-17b2b43e2282"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -128,6 +146,28 @@ public partial class @TestInput: IInputActionCollection2, IDisposable
                     ""action"": ""JumpKey"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd398b08-8d69-4fc1-bf50-971de9a43f2f"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b35e3987-6198-4c7c-b915-e83a466b80ed"",
+                    ""path"": ""<Keyboard>/u"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -141,6 +181,8 @@ public partial class @TestInput: IInputActionCollection2, IDisposable
         m_Gameplay_MoveLeftKey = m_Gameplay.FindAction("MoveLeftKey", throwIfNotFound: true);
         m_Gameplay_MoveRightKey = m_Gameplay.FindAction("MoveRightKey", throwIfNotFound: true);
         m_Gameplay_JumpKey = m_Gameplay.FindAction("JumpKey", throwIfNotFound: true);
+        m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
+        m_Gameplay_AttackKey = m_Gameplay.FindAction("AttackKey", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -207,6 +249,8 @@ public partial class @TestInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_MoveLeftKey;
     private readonly InputAction m_Gameplay_MoveRightKey;
     private readonly InputAction m_Gameplay_JumpKey;
+    private readonly InputAction m_Gameplay_Attack;
+    private readonly InputAction m_Gameplay_AttackKey;
     public struct GameplayActions
     {
         private @TestInput m_Wrapper;
@@ -216,6 +260,8 @@ public partial class @TestInput: IInputActionCollection2, IDisposable
         public InputAction @MoveLeftKey => m_Wrapper.m_Gameplay_MoveLeftKey;
         public InputAction @MoveRightKey => m_Wrapper.m_Gameplay_MoveRightKey;
         public InputAction @JumpKey => m_Wrapper.m_Gameplay_JumpKey;
+        public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
+        public InputAction @AttackKey => m_Wrapper.m_Gameplay_AttackKey;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -240,6 +286,12 @@ public partial class @TestInput: IInputActionCollection2, IDisposable
             @JumpKey.started += instance.OnJumpKey;
             @JumpKey.performed += instance.OnJumpKey;
             @JumpKey.canceled += instance.OnJumpKey;
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
+            @AttackKey.started += instance.OnAttackKey;
+            @AttackKey.performed += instance.OnAttackKey;
+            @AttackKey.canceled += instance.OnAttackKey;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -259,6 +311,12 @@ public partial class @TestInput: IInputActionCollection2, IDisposable
             @JumpKey.started -= instance.OnJumpKey;
             @JumpKey.performed -= instance.OnJumpKey;
             @JumpKey.canceled -= instance.OnJumpKey;
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
+            @AttackKey.started -= instance.OnAttackKey;
+            @AttackKey.performed -= instance.OnAttackKey;
+            @AttackKey.canceled -= instance.OnAttackKey;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -283,5 +341,7 @@ public partial class @TestInput: IInputActionCollection2, IDisposable
         void OnMoveLeftKey(InputAction.CallbackContext context);
         void OnMoveRightKey(InputAction.CallbackContext context);
         void OnJumpKey(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
+        void OnAttackKey(InputAction.CallbackContext context);
     }
 }
