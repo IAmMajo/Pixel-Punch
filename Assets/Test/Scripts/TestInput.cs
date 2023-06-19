@@ -44,6 +44,33 @@ public partial class @TestInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MoveLeftKey"",
+                    ""type"": ""Button"",
+                    ""id"": ""ebe87645-b015-4722-9018-1fef6053f579"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveRightKey"",
+                    ""type"": ""Button"",
+                    ""id"": ""284e1a64-dbe0-40aa-a282-b46627d2835f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""JumpKey"",
+                    ""type"": ""Button"",
+                    ""id"": ""bdeade6f-29de-4503-8e3b-b541bae9e859"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -68,6 +95,39 @@ public partial class @TestInput: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""518fa127-e464-4af6-8660-b5a1e8d330b8"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveLeftKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""139c335f-e830-4b49-972b-3d7fb6d8e2a3"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveRightKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5c5f14ca-c34b-488c-9c55-19832c78ba30"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JumpKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -78,6 +138,9 @@ public partial class @TestInput: IInputActionCollection2, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
+        m_Gameplay_MoveLeftKey = m_Gameplay.FindAction("MoveLeftKey", throwIfNotFound: true);
+        m_Gameplay_MoveRightKey = m_Gameplay.FindAction("MoveRightKey", throwIfNotFound: true);
+        m_Gameplay_JumpKey = m_Gameplay.FindAction("JumpKey", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -141,12 +204,18 @@ public partial class @TestInput: IInputActionCollection2, IDisposable
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Move;
+    private readonly InputAction m_Gameplay_MoveLeftKey;
+    private readonly InputAction m_Gameplay_MoveRightKey;
+    private readonly InputAction m_Gameplay_JumpKey;
     public struct GameplayActions
     {
         private @TestInput m_Wrapper;
         public GameplayActions(@TestInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
+        public InputAction @MoveLeftKey => m_Wrapper.m_Gameplay_MoveLeftKey;
+        public InputAction @MoveRightKey => m_Wrapper.m_Gameplay_MoveRightKey;
+        public InputAction @JumpKey => m_Wrapper.m_Gameplay_JumpKey;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -162,6 +231,15 @@ public partial class @TestInput: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @MoveLeftKey.started += instance.OnMoveLeftKey;
+            @MoveLeftKey.performed += instance.OnMoveLeftKey;
+            @MoveLeftKey.canceled += instance.OnMoveLeftKey;
+            @MoveRightKey.started += instance.OnMoveRightKey;
+            @MoveRightKey.performed += instance.OnMoveRightKey;
+            @MoveRightKey.canceled += instance.OnMoveRightKey;
+            @JumpKey.started += instance.OnJumpKey;
+            @JumpKey.performed += instance.OnJumpKey;
+            @JumpKey.canceled += instance.OnJumpKey;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -172,6 +250,15 @@ public partial class @TestInput: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @MoveLeftKey.started -= instance.OnMoveLeftKey;
+            @MoveLeftKey.performed -= instance.OnMoveLeftKey;
+            @MoveLeftKey.canceled -= instance.OnMoveLeftKey;
+            @MoveRightKey.started -= instance.OnMoveRightKey;
+            @MoveRightKey.performed -= instance.OnMoveRightKey;
+            @MoveRightKey.canceled -= instance.OnMoveRightKey;
+            @JumpKey.started -= instance.OnJumpKey;
+            @JumpKey.performed -= instance.OnJumpKey;
+            @JumpKey.canceled -= instance.OnJumpKey;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -193,5 +280,8 @@ public partial class @TestInput: IInputActionCollection2, IDisposable
     {
         void OnJump(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnMoveLeftKey(InputAction.CallbackContext context);
+        void OnMoveRightKey(InputAction.CallbackContext context);
+        void OnJumpKey(InputAction.CallbackContext context);
     }
 }

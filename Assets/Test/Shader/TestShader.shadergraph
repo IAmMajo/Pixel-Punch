@@ -64,6 +64,9 @@
     "m_GroupDatas": [
         {
             "m_Id": "991406167b474fe8bf175a979958f1ac"
+        },
+        {
+            "m_Id": "a7ff536740034d33a4dc77c9de5e8836"
         }
     ],
     "m_StickyNoteDatas": [],
@@ -183,8 +186,8 @@
     ],
     "m_VertexContext": {
         "m_Position": {
-            "x": 0.0,
-            "y": 0.0
+            "x": -832.6668090820313,
+            "y": 720.6666870117188
         },
         "m_Blocks": [
             {
@@ -200,8 +203,8 @@
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": 0.0,
-            "y": 200.0
+            "x": -832.6668090820313,
+            "y": 916.0000610351563
         },
         "m_Blocks": [
             {
@@ -313,10 +316,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -279.3333435058594,
-            "y": 209.99998474121095,
-            "width": 209.33334350585938,
-            "height": 304.0
+            "x": -1362.0,
+            "y": 764.0000610351563,
+            "width": 209.333251953125,
+            "height": 303.99993896484377
         }
     },
     "m_Slots": [
@@ -530,17 +533,17 @@
     "m_Type": "UnityEditor.ShaderGraph.SubtractNode",
     "m_ObjectId": "372a4a3862e44c03bf303a1e86e21325",
     "m_Group": {
-        "m_Id": ""
+        "m_Id": "a7ff536740034d33a4dc77c9de5e8836"
     },
     "m_Name": "Subtract",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1004.0000610351563,
-            "y": 350.0000305175781,
-            "width": 209.3333740234375,
-            "height": 303.9999694824219
+            "x": -1077.3333740234375,
+            "y": 392.666748046875,
+            "width": 209.33331298828126,
+            "height": 303.99993896484377
         }
     },
     "m_Slots": [
@@ -1040,10 +1043,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -394.0,
-            "y": 246.0,
+            "x": -1361.3333740234375,
+            "y": 736.0,
             "width": 114.6666259765625,
-            "height": 36.0
+            "height": 35.99993896484375
         }
     },
     "m_Slots": [
@@ -1159,6 +1162,17 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.GroupData",
+    "m_ObjectId": "a7ff536740034d33a4dc77c9de5e8836",
+    "m_Title": "Mapping",
+    "m_Position": {
+        "x": 10.0,
+        "y": 10.0
     }
 }
 
@@ -1543,17 +1557,17 @@
     "m_Type": "UnityEditor.ShaderGraph.DivideNode",
     "m_ObjectId": "ed1f4ed3bc874c1e883d2f14ee6ace69",
     "m_Group": {
-        "m_Id": ""
+        "m_Id": "a7ff536740034d33a4dc77c9de5e8836"
     },
     "m_Name": "Divide",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -627.3333129882813,
-            "y": 328.0,
-            "width": 209.33331298828126,
-            "height": 304.0
+            "x": -848.0000610351563,
+            "y": 392.666748046875,
+            "width": 209.33343505859376,
+            "height": 303.99993896484377
         }
     },
     "m_Slots": [

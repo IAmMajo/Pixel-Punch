@@ -13,8 +13,11 @@ public class TestMovement : MonoBehaviour
     Transform tr;
 
     TestInput controls;
-    InputAction jump;
-    InputAction move;
+    InputAction jumpGamepad;
+    InputAction moveGamepad;
+    InputAction moveLeftKey;
+    InputAction moveRightKey;
+    InputAction jumpKey;
 
     [SerializeField]
     float moveSpeed;
@@ -23,20 +26,32 @@ public class TestMovement : MonoBehaviour
     void Awake()
     {
         controls = new TestInput();
-        jump = controls.Gameplay.Jump;
-        move = controls.Gameplay.Move;
+        //gamepad
+        jumpGamepad = controls.Gameplay.Jump;
+        moveGamepad = controls.Gameplay.Move;
+        //keyboard
+        moveLeftKey = controls.Gameplay.MoveLeftKey;
+        moveRightKey = controls.Gameplay.MoveRightKey;
+        jumpKey = controls.Gameplay.JumpKey;
     }
 
     void Update()
     {
         //checks if the jump button gets pressed and if you jumped less than two times, as you are not supossed to fly but a double jump is common for such games
-        if (jump.triggered && jumpCount < 2)
+        if ((jumpGamepad.triggered || jumpKey.triggered) && jumpCount < 2)
         {
             Jump();
             jumpCount++;
         }
         //as the objects are supposed to only move along one axis, but the controller gives us values for two and the functions wants to have three some tricking is required
-        tr.Translate(new Vector3(0, 0, move.ReadValue<Vector2>().x * -1f) * moveSpeed * Time.deltaTime, Space.Self);
+        Debug.Log(moveGamepad.ReadValue<Vector2>().x * -1f);
+        tr.Translate(new Vector3(0, 0, moveGamepad.ReadValue<Vector2>().x * -1f) * moveSpeed * Time.deltaTime, Space.Self);
+        if (moveLeftKey.IsPressed())
+        {
+            tr.Translate(new Vector3(0, 0, 1) * moveSpeed * Time.deltaTime, Space.Self);
+        }else if(moveRightKey.IsPressed()){
+            tr.Translate(new Vector3(0, 0, -1) * moveSpeed * Time.deltaTime, Space.Self);
+        }
     }
 
     void Jump()
