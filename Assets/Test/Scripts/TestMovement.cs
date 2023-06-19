@@ -26,6 +26,8 @@ public class TestMovement : MonoBehaviour
 
     [SerializeField]
     GameObject BASICATTACKOBJECT;
+    [SerializeField]
+    Vector3 basicAttackCorrectionVector;
 
     float jumpCount = 0;
     void Awake()
@@ -75,7 +77,7 @@ public class TestMovement : MonoBehaviour
 
     void BasicAttackMethod()
     {
-        Instantiate(BASICATTACKOBJECT, tr.transform);
+        Instantiate(BASICATTACKOBJECT, tr.position + basicAttackCorrectionVector, tr.rotation);
     }
 
     void OnCollisionEnter(Collision e)

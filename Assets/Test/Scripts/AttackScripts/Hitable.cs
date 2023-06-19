@@ -13,7 +13,7 @@ public class Hitable : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision e)
+    void OnTriggerEnter(Collider e)
     {
         if (e.gameObject.tag == "Attack")
         {
