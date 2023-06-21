@@ -7,9 +7,9 @@ using UnityEngine.InputSystem;
 public class TestMovement : MonoBehaviour
 {
 
-    [SerializeField]
+    
     Rigidbody rg;
-    [SerializeField]
+    
     Transform tr;
 
 
@@ -28,6 +28,8 @@ public class TestMovement : MonoBehaviour
     float jumpCount = 0;
     void Awake()
     {
+        tr = this.transform;
+        rg = this.GetComponent<Rigidbody>();
     }
 
     public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
