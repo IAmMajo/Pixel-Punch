@@ -10,8 +10,6 @@ public class TestMovement : MonoBehaviour
 
     Rigidbody rg;
 
-    Transform tr;
-
     Animator animator;
 
 
@@ -47,7 +45,6 @@ public class TestMovement : MonoBehaviour
     float jumpCount = 0;
     void Awake()
     {
-        tr = this.transform;
         rg = this.GetComponent<Rigidbody>();
         animator = this.GetComponent<Animator>();
     }
@@ -65,59 +62,80 @@ public class TestMovement : MonoBehaviour
     void Update()
     {
 
-        //as the objects are supposed to only move along one axis, but the controller gives us values for two and the functions wants to have three some tricking is required
-        tr.Translate(new Vector3(0, 0, movementInput.x) * moveSpeed * Time.deltaTime, Space.Self);
-        animator.SetFloat("Walking", Mathf.Abs(movementInput.x));
-
-
-        if (jumped && !invoked)
+        if (!invoked)
         {
-            Jump();
-            jumped = false;
+            //as the objects are supposed to only move along one axis, but the controller gives us values for two and the functions wants to have three some tricking is required
+            transform.Translate(new Vector3(movementInput.x * moveSpeed * Time.deltaTime, 0, 0), Space.World);
+            animator.SetFloat("Walking", Mathf.Abs(movementInput.x));
+            if (GetSign(movementInput.x) != 0)
+            {
+                transform.rotation = Quaternion.LookRotation(new Vector3(GetSign(movementInput.x), 0, 0), Vector3.up);
+            }
+
+
+            if (jumped)
+            {
+                Jump();
+                jumped = false;
+            }
+
+            if (basicAttacked)
+            {
+
+                invoked = true;
+                animator.SetTrigger("BasicAttack");
+                Invoke("BasicAttackMethod", basicAttackTime);
+                StartCoroutine(AnimationEnd("BasicAttack", basicAttackAnimationTime));
+            }
+
+            if (heavyAttacked)
+            {
+
+                invoked = true;
+                animator.SetTrigger("HeavyAttack");
+                HeavyAttackMethod();
+                Invoke("HeavyAttackMethod", heavyAttackTime);
+                StartCoroutine(AnimationEnd("HeavyAttack", heavyAttackAnimationTime));
+            }
         }
 
-        if (basicAttacked && !invoked)
-        {
-
-            invoked = true;
-            animator.SetTrigger("BasicAttack");
-            Invoke("BasicAttackMethod", basicAttackTime);
-            StartCoroutine(AnimationEnd("BasicAttack", basicAttackAnimationTime));
-        }
-
-        if (heavyAttacked && !invoked)
-        {
-
-            invoked = true;
-            animator.SetTrigger("HeavyAttack");
-            HeavyAttackMethod();
-            Invoke("HeavyAttackMethod", heavyAttackTime);
-            StartCoroutine(AnimationEnd("HeavyAttack", heavyAttackAnimationTime));
-        }
         heavyAttacked = false;
         basicAttacked = false;
         jumped = false;
     }
 
+    int GetSign(float pValue)
+    {
+        if (pValue > 0) return 1;
+        if (pValue < 0) return -1;
+        return 0;
+    }
+
     void Jump()
     {
-        if (jumpCount < 2)
+        if (jumpCount <= 2)
         {
             //divison trough jumpcount to make second jump smaller
             rg.AddForce(new Vector3(0, 10 / (jumpCount * 2 + 1), 0), ForceMode.Impulse);
+            jumpCount++;
         }
 
     }
 
     void BasicAttackMethod()
     {
-        Instantiate(basicAttackObject, tr.position + basicAttackCorrectionVector, tr.rotation);
+        Instantiate(basicAttackObject, transform.position + new Vector3(basicAttackCorrectionVector.x * GetSign(transform.rotation.y),
+        basicAttackCorrectionVector.y,
+        basicAttackCorrectionVector.z * GetSign(transform.rotation.y)),
+        transform.rotation);
         basicAttacked = false;
-    }   
+    }
 
     void HeavyAttackMethod()
     {
-        Instantiate(heavyAttackObject, tr.position + heavyAttackCorrectionVector, tr.rotation);
+        Instantiate(heavyAttackObject, transform.position + new Vector3(heavyAttackCorrectionVector.x * GetSign(transform.rotation.y),
+        heavyAttackCorrectionVector.y,
+        heavyAttackCorrectionVector.z * GetSign(transform.rotation.y)), transform.rotation);
         heavyAttacked = false;
     }
 
@@ -133,7 +151,7 @@ public class TestMovement : MonoBehaviour
     void OnCollisionEnter(Collision e)
     {
         //checks if collision happens with a Object that is tagged as Ground and that is lower to prevent wall jumps
-        if (e.gameObject.tag == "Ground" && e.gameObject.transform.position.y < transform.position.y)
+        if (e.gameObject.tag == "Ground" && e.gameObject.transform.position.y < base.transform.position.y)
         {
             jumpCount = 0;
         }

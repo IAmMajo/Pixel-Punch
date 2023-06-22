@@ -9,6 +9,9 @@ public class AttackDamage : MonoBehaviour
     [SerializeField]
     float lifetime;
 
+    [SerializeField]
+    public string casterTag; 
+
     void Awake(){
         Destroy(this.gameObject, lifetime);
     }
