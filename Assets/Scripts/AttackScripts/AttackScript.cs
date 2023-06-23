@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackDamage : MonoBehaviour
+public class AttackScript : MonoBehaviour
 {
     [SerializeField]
     public int damage;
     [SerializeField]
     float lifetime;
 
-    [SerializeField]
-    public string casterTag; 
+    public GameObject creator; 
+    public Vector3 correctionVector;
 
     void Awake(){
         Destroy(this.gameObject, lifetime);

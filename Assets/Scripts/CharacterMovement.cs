@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class TestMovement : MonoBehaviour
+public class CharacterMovement : MonoBehaviour
 {
 
 
@@ -39,14 +39,30 @@ public class TestMovement : MonoBehaviour
     float heavyAttackTime;
     [SerializeField]
     float heavyAttackAnimationTime;
-    [SerializeField]
 
+    SpecialCharacterActions spChAc;
+
+    [SerializeField]
+    int charactorSelector;
 
     float jumpCount = 0;
+
+
     void Awake()
     {
         rg = this.GetComponent<Rigidbody>();
         animator = this.GetComponent<Animator>();
+        switch (charactorSelector)
+        {
+            case 0:
+                spChAc = this.GetComponent<SpecialActionsGoboBase>();
+                break;
+
+            default:
+                Debug.Log("Ungültiger Character Selector");
+                spChAc = null;
+                break;
+        }
     }
 
     public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
@@ -81,19 +97,23 @@ public class TestMovement : MonoBehaviour
 
             if (basicAttacked)
             {
-
                 invoked = true;
-                animator.SetTrigger("BasicAttack");
+                animator.SetTrigger("BasicAttack"); if (spChAc != null)
+                {
+                    spChAc.BasicAttackBehavior();
+                }
                 Invoke("BasicAttackMethod", basicAttackTime);
                 StartCoroutine(AnimationEnd("BasicAttack", basicAttackAnimationTime));
             }
 
             if (heavyAttacked)
             {
-
                 invoked = true;
                 animator.SetTrigger("HeavyAttack");
-                HeavyAttackMethod();
+                if (spChAc != null)
+                {
+                    spChAc.HeavyAttackBehavior();
+                }
                 Invoke("HeavyAttackMethod", heavyAttackTime);
                 StartCoroutine(AnimationEnd("HeavyAttack", heavyAttackAnimationTime));
             }
@@ -124,26 +144,33 @@ public class TestMovement : MonoBehaviour
 
     void BasicAttackMethod()
     {
-        Instantiate(basicAttackObject, transform.position + new Vector3(basicAttackCorrectionVector.x * GetSign(transform.rotation.y),
-        basicAttackCorrectionVector.y,
-        basicAttackCorrectionVector.z * GetSign(transform.rotation.y)),
-        transform.rotation);
+        Vector3 correctionVectorCurrent = new Vector3(basicAttackCorrectionVector.x * GetSign(transform.rotation.y),
+            basicAttackCorrectionVector.y,
+            basicAttackCorrectionVector.z * GetSign(transform.rotation.y));
+        GameObject attack = Instantiate(basicAttackObject, transform.position + correctionVectorCurrent,
+            transform.rotation);
+        attack.GetComponent<AttackScript>().creator = this.gameObject;
+        attack.GetComponent<AttackScript>().correctionVector = correctionVectorCurrent;
         basicAttacked = false;
     }
 
     void HeavyAttackMethod()
     {
-        Instantiate(heavyAttackObject, transform.position + new Vector3(heavyAttackCorrectionVector.x * GetSign(transform.rotation.y),
-        heavyAttackCorrectionVector.y,
-        heavyAttackCorrectionVector.z * GetSign(transform.rotation.y)), transform.rotation);
+        Vector3 correctionVectorCurrent = new Vector3(heavyAttackCorrectionVector.x * GetSign(transform.rotation.y),
+          heavyAttackCorrectionVector.y,
+          heavyAttackCorrectionVector.z * GetSign(transform.rotation.y));
+        GameObject attack = Instantiate(heavyAttackObject, transform.position + correctionVectorCurrent, transform.rotation);
+        attack.GetComponent<AttackScript>().creator = this.gameObject;
+         attack.GetComponent<AttackScript>().correctionVector = correctionVectorCurrent;
         heavyAttacked = false;
     }
 
     IEnumerator AnimationEnd(string pAnimation, float pTime)
     {
         yield return new WaitForSeconds(pTime);
-        invoked = false;
+
         animator.ResetTrigger(pAnimation);
+        invoked = false;
         //setting jump to false to prevent weird behavior
         jumped = false;
     }
