@@ -343,6 +343,18 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1824704011056314397}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af246a3f12256e54c96e55600cffc7e7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 456637435025427808}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af246a3f12256e54c96e55600cffc7e7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7969989340412322615}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af246a3f12256e54c96e55600cffc7e7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 226588305509250409}
   m_SourcePrefab: {fileID: 100100000, guid: af246a3f12256e54c96e55600cffc7e7, type: 3}
 --- !u!1 &5283363350038355971 stripped
 GameObject:
@@ -396,7 +408,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 88
   m_CollisionDetection: 0
 --- !u!114 &1824704011056314397
 MonoBehaviour:
@@ -413,12 +425,141 @@ MonoBehaviour:
   moveSpeed: 7
   basicAttackObject: {fileID: 1389624520799034978, guid: 5e7c78a069d16cc48bbbf2511799f2b2,
     type: 3}
-  basicAttackCorrectionVector: {x: 0, y: 0, z: 0}
-  basicAttackTime: 0
-  basicAttackAnimationTime: 0
+  basicAttackCorrectionVector: {x: 1, y: 2.5, z: 2}
+  basicAttackTime: 0.8
+  basicAttackAnimationTime: 1
   heavyAttackObject: {fileID: 3064401896288893919, guid: 6e3f6d65b2adb364ebb0c917e004e181,
     type: 3}
   heavyAttackCorrectionVector: {x: 0, y: 0, z: 0}
   heavyAttackTime: 0
   heavyAttackAnimationTime: 0
   charactorSelector: 0
+--- !u!114 &456637435025427808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5283363350038355971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 079394bb2a0191a418b15a54dae3b48a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealthPoints: 10
+--- !u!95 &-7969989340412322615
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5283363350038355971}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: badaa907f0870ed4291886b6341d8dc6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &226588305509250409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5283363350038355971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: ab0787d1d2f8dfe47a201ffc4efdd6e9,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1824704011056314397}
+        m_TargetAssemblyTypeName: CharacterMovement, Assembly-CSharp
+        m_MethodName: OnJumped
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e218f9aa-2aa3-4245-aa07-a267ffdf5cd0
+    m_ActionName: Gameplay/Jump[/XInputControllerWindows/buttonSouth,/Keyboard/w,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1824704011056314397}
+        m_TargetAssemblyTypeName: CharacterMovement, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 86572fb5-3908-4cd4-987e-f2e74236dfb9
+    m_ActionName: Gameplay/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1824704011056314397}
+        m_TargetAssemblyTypeName: CharacterMovement, Assembly-CSharp
+        m_MethodName: OnBasicAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ac460356-e45f-4aa1-8a33-07ef721e08ac
+    m_ActionName: Gameplay/Attack[/XInputControllerWindows/buttonWest,/Keyboard/u]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1824704011056314397}
+        m_TargetAssemblyTypeName: CharacterMovement, Assembly-CSharp
+        m_MethodName: OnHeavyAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7ad820b9-3470-4ebe-bc91-1c7ab905aef4
+    m_ActionName: Gameplay/HeavyAttack[/XInputControllerWindows/buttonEast,/Keyboard/j]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Scheme
+  m_DefaultActionMap: Gameplay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
