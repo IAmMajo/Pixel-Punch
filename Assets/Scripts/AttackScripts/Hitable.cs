@@ -17,8 +17,10 @@ public class Hitable : MonoBehaviour
 
     void OnTriggerEnter(Collider e)
     {
+        
         if (e.gameObject.tag == "Attack" && e.gameObject.GetComponent<AttackScript>().creator != this.gameObject)
         {
+            Debug.Log(currentHealthPoints);
             currentHealthPoints = currentHealthPoints - e.gameObject.GetComponent<AttackScript>().damage;
         }
     }

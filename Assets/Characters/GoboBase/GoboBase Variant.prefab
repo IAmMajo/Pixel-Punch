@@ -442,7 +442,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8660944802121834354}
-        m_TargetAssemblyTypeName: TestMovement, Assembly-CSharp
+        m_TargetAssemblyTypeName: CharacterMovement, Assembly-CSharp
         m_MethodName: OnJumped
         m_Mode: 0
         m_Arguments:
@@ -458,7 +458,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8660944802121834354}
-        m_TargetAssemblyTypeName: TestMovement, Assembly-CSharp
+        m_TargetAssemblyTypeName: CharacterMovement, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
@@ -474,7 +474,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8660944802121834354}
-        m_TargetAssemblyTypeName: TestMovement, Assembly-CSharp
+        m_TargetAssemblyTypeName: CharacterMovement, Assembly-CSharp
         m_MethodName: OnBasicAttack
         m_Mode: 0
         m_Arguments:
