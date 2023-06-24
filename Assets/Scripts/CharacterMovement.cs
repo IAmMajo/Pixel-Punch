@@ -67,10 +67,10 @@ public class CharacterMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
 
-    public void OnJumped(InputAction.CallbackContext ctx) => jumped = true;
+    public void OnJumped(InputAction.CallbackContext ctx) => jumped = ctx.performed;
 
-    public void OnBasicAttack(InputAction.CallbackContext ctx) => basicAttacked = true;
-    public void OnHeavyAttack(InputAction.CallbackContext ctx) => heavyAttacked = true;
+    public void OnBasicAttack(InputAction.CallbackContext ctx) => basicAttacked = ctx.performed;
+    public void OnHeavyAttack(InputAction.CallbackContext ctx) => heavyAttacked = ctx.performed;
 
 
     private bool invoked;
@@ -136,7 +136,7 @@ public class CharacterMovement : MonoBehaviour
         if (jumpCount <= 2)
         {
             //divison trough jumpcount to make second jump smaller
-            rg.AddForce(new Vector3(0, 10 / (jumpCount * 2 + 1), 0), ForceMode.Impulse);
+            rg.AddForce(new Vector3(0, 10 / (jumpCount + 1), 0), ForceMode.Impulse);
             jumpCount++;
         }
 
