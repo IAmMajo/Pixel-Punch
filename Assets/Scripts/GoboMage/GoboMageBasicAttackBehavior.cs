@@ -13,7 +13,7 @@ public class GoboMageBasicAttackBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), Random.Range(-10f, 10f)));
+        transform.Rotate(new Vector3(Random.Range(-2f, 2f), Random.Range(-1f, 1f), 0));
         transform.position = transform.position + transform.forward*0.1f;
     }
 }

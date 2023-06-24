@@ -425,15 +425,15 @@ MonoBehaviour:
   moveSpeed: 7
   basicAttackObject: {fileID: 1389624520799034978, guid: 5e7c78a069d16cc48bbbf2511799f2b2,
     type: 3}
-  basicAttackCorrectionVector: {x: 1, y: 2.5, z: 2}
-  basicAttackTime: 0.8
+  basicAttackCorrectionVector: {x: 0.5, y: 2.5, z: 2}
+  basicAttackTime: 0.9
   basicAttackAnimationTime: 1
   heavyAttackObject: {fileID: 3064401896288893919, guid: 6e3f6d65b2adb364ebb0c917e004e181,
     type: 3}
-  heavyAttackCorrectionVector: {x: 0, y: 0, z: 0}
-  heavyAttackTime: 0
-  heavyAttackAnimationTime: 0
-  charactorSelector: 0
+  heavyAttackCorrectionVector: {x: 4, y: 1.8, z: 0.5}
+  heavyAttackTime: 1
+  heavyAttackAnimationTime: 1.5
+  charactorSelector: 1
 --- !u!114 &456637435025427808
 MonoBehaviour:
   m_ObjectHideFlags: 0
