@@ -9,6 +9,8 @@ public class Hitable : MonoBehaviour
     int maxHealthPoints;
 
     int currentHealthPoints;
+
+    bool iFrames;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +20,18 @@ public class Hitable : MonoBehaviour
     void OnTriggerEnter(Collider e)
     {
         
-        if (e.gameObject.tag == "Attack" && e.gameObject.GetComponent<AttackScript>().creator != this.gameObject)
+        if (e.gameObject.tag == "Attack" && e.gameObject.GetComponent<AttackScript>().creator != this.gameObject && !iFrames)
         {
             Debug.Log(currentHealthPoints);
             currentHealthPoints = currentHealthPoints - e.gameObject.GetComponent<AttackScript>().damage;
+            iFrames = true;
+            StartCoroutine(resetIFrames());
         }
+    }
+
+    IEnumerator resetIFrames()
+    {
+        yield return new WaitForSeconds(0.01f);
+        iFrames = false;
     }
 }
