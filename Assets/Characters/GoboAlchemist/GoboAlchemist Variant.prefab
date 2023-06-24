@@ -411,8 +411,8 @@ MonoBehaviour:
   moveSpeed: 5
   basicAttackObject: {fileID: 5312786623587207101, guid: dc2a503fda963154e9df6329ac1d7be8,
     type: 3}
-  basicAttackCorrectionVector: {x: 0, y: 2, z: 0}
-  basicAttackTime: 0.5
+  basicAttackCorrectionVector: {x: -0.5, y: 2, z: 1}
+  basicAttackTime: 0.8
   basicAttackAnimationTime: 1
   heavyAttackObject: {fileID: 228177906555409068, guid: 251dcca32422a1a4a8ca9ca26cce1b62,
     type: 3}
