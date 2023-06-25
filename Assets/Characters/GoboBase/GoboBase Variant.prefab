@@ -542,6 +542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealthPoints: 10
+  totalRespawns: 3
 --- !u!114 &8707346980347256020
 MonoBehaviour:
   m_ObjectHideFlags: 0
