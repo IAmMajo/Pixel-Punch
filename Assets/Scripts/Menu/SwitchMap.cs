@@ -1,53 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SwitchMap : MonoBehaviour
 {
    // Start is called before the first frame update
-    public GameObject[] Map;
+    public Sprite[] Maps;
+    public Sprite[] Texts;
     int index;
+
+    Image preview;
+
+    [SerializeField]
+    GameObject textArea;
+    Image textPreview;
     void Start()
     {
         index = 0;
+        preview = GetComponent<Image>();
+        preview.sprite = Maps[index];
+        textPreview = textArea.GetComponent<Image>();
+        textPreview.sprite = Texts[index];
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Next()
     {
-        if (index > 1)
-        index = 1;
- 
-        if(index < 0)
-        index = 0;
-
-        if(index == 0)
+        if (index < Maps.Length - 1)
         {
-            Map[0].gameObject.SetActive(true);
+            index += 1;
         }
+        else
+        {
+            index = 0;
+        }
+
+        preview.sprite = Maps[index];
+        textPreview.sprite = Texts[index];
     }
 
-    public void NextMap()
+    public void Previous()
     {
-        index += 1;
-
-        for(int i = 0; i < Map.Length; i++)
+        if (index > 0)
         {
-            Map[i].gameObject.SetActive(false);
-            Map[index].gameObject.SetActive(true);
+            index -= 1;
         }
-        Debug.Log(index);
-    }
-
-        public void PreviousMap()
+        else
         {
-        index -= 1;
-
-        for(int i = 0; i < Map.Length; i++)
-        {
-            Map[i].gameObject.SetActive(false);
-            Map[index].gameObject.SetActive(true);
+            index = Maps.Length - 1;
         }
-        Debug.Log(index);
+
+        preview.sprite = Maps[index];
+        textPreview.sprite = Texts[index];
     }
 }
