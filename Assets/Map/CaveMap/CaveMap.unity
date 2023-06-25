@@ -1072,6 +1072,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RockyRoundPlatform Variant (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1540230337471746184, guid: ba4d4990ccd1b24459074bda2a1281df,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 2167410064010824242, guid: ba4d4990ccd1b24459074bda2a1281df,
         type: 3}
       propertyPath: m_RootOrder
