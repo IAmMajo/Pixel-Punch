@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class Switch : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject[] Gobo;
-    public GameObject[] Text;
+    public GameObject[] Gobos;
+    public GameObject[] Texts;
     int index;
     void Start()
     {
@@ -18,42 +18,58 @@ public class Switch : MonoBehaviour
     void Update()
     {
         if (index > 2)
-        index = 2;
- 
-        if(index < 0)
-        index = 0;
+            index = 2;
 
-        if(index == 0)
+        if (index < 0)
+            index = 0;
+
+        if (index == 0)
         {
-            Gobo[0].gameObject.SetActive(true);
-            Text[0].gameObject.SetActive(true);
+            Gobos[0].gameObject.SetActive(true);
+            Texts[0].gameObject.SetActive(true);
         }
     }
 
     public void Next()
     {
-        index += 1;
-
-        for(int i = 0; i < Gobo.Length; i++)
+        if (index < Gobos.Length - 1)
         {
-            Gobo[i].gameObject.SetActive(false);
-            Gobo[index].gameObject.SetActive(true);
-            Text[i].gameObject.SetActive(false);
-            Text[index].gameObject.SetActive(true);
+            index += 1;
+        }
+        else
+        {
+            index = 0;
+        }
+
+
+        for (int i = 0; i < Gobos.Length; i++)
+        {
+            Gobos[i].gameObject.SetActive(false);
+            Gobos[index].gameObject.SetActive(true);
+            Texts[i].gameObject.SetActive(false);
+            Texts[index].gameObject.SetActive(true);
         }
         Debug.Log(index);
     }
 
-        public void Previous()
+    public void Previous()
+    {
+        if (index > 0)
         {
-        index -= 1;
+            index -= 1;
+        }
+        else
+        {
+            index = Gobos.Length-1;
+        }
+        
 
-        for(int i = 0; i < Gobo.Length; i++)
+        for (int i = 0; i < Gobos.Length; i++)
         {
-            Gobo[i].gameObject.SetActive(false);
-            Gobo[index].gameObject.SetActive(true);
-            Text[i].gameObject.SetActive(false);
-            Text[index].gameObject.SetActive(true);
+            Gobos[i].gameObject.SetActive(false);
+            Gobos[index].gameObject.SetActive(true);
+            Texts[i].gameObject.SetActive(false);
+            Texts[index].gameObject.SetActive(true);
         }
         Debug.Log(index);
     }

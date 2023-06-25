@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 261.80057, g: 324.3278, b: 429.24698, a: 1}
+  m_IndirectSpecularColor: {r: 262.38358, g: 325.10843, b: 430.30963, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1040,14 +1040,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642a4c4b53b85cb428a4019edc85c6fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gobo:
+  Gobos:
   - {fileID: 20662425}
   - {fileID: 75816319}
   - {fileID: 1228538583}
-  Text:
-  - {fileID: 626331940}
-  - {fileID: 683498829}
-  - {fileID: 377147661}
+  Texts:
+  - {fileID: 378889672}
+  - {fileID: 1157314692}
+  - {fileID: 1467271115}
 --- !u!4 &413775513
 Transform:
   m_ObjectHideFlags: 0
