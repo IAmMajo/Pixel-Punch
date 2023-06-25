@@ -220,6 +220,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 17097d41ea9de894591ce11c321865bb, type: 3}
   - {fileID: 21300000, guid: 4cf25f55f2852fe4f8bf06d841cbaac7, type: 3}
   - {fileID: 21300000, guid: 61bf463a7d36ae549b2a52243a3b4faa, type: 3}
+  textArea: {fileID: 626331940}
 --- !u!1 &29540457
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,7 +594,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 20662429}
         m_TargetAssemblyTypeName: Switch, Assembly-CSharp
         m_MethodName: Next
         m_Mode: 1
@@ -654,6 +655,7 @@ GameObject:
   - component: {fileID: 378889673}
   - component: {fileID: 378889675}
   - component: {fileID: 378889674}
+  - component: {fileID: 378889676}
   m_Layer: 5
   m_Name: Player2Selected
   m_TagString: Untagged
@@ -719,6 +721,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378889672}
   m_CullTransparentMesh: 1
+--- !u!114 &378889676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378889672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 642a4c4b53b85cb428a4019edc85c6fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Gobos:
+  - {fileID: 21300000, guid: 15e7755104098764fa22771501c38aee, type: 3}
+  - {fileID: 21300000, guid: 52cc3f96c13b19948b37f99de9647ec5, type: 3}
+  - {fileID: 21300000, guid: 0efea3472c529524ba1085fa0721a7de, type: 3}
+  Texts:
+  - {fileID: 21300000, guid: 17097d41ea9de894591ce11c321865bb, type: 3}
+  - {fileID: 21300000, guid: 4cf25f55f2852fe4f8bf06d841cbaac7, type: 3}
+  - {fileID: 21300000, guid: 61bf463a7d36ae549b2a52243a3b4faa, type: 3}
+  textArea: {fileID: 888715434}
 --- !u!1 &400393843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,7 +1417,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 378889676}
         m_TargetAssemblyTypeName: Switch, Assembly-CSharp
         m_MethodName: Previous
         m_Mode: 1
@@ -1527,7 +1550,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 20662429}
         m_TargetAssemblyTypeName: Switch, Assembly-CSharp
         m_MethodName: Previous
         m_Mode: 1
@@ -2140,7 +2163,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 378889676}
         m_TargetAssemblyTypeName: Switch, Assembly-CSharp
         m_MethodName: Next
         m_Mode: 1
