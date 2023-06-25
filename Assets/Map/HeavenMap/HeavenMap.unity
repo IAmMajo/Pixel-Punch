@@ -894,6 +894,59 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0e906f359d1fcb45ab11af6e8ecc9e6, type: 3}
+--- !u!1 &914644170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 914644172}
+  - component: {fileID: 914644171}
+  m_Layer: 0
+  m_Name: Rememberer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!114 &914644171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914644170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c35cce84f02c60f489680b19c7a0056e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goboBase: {fileID: 1816160418006248080, guid: d721f64bb968a0c46af430491527d506,
+    type: 3}
+  goboAlch: {fileID: 7274777380207376006, guid: e8d0d697a8e8e01488523304d2e1d5dd,
+    type: 3}
+  goboMage: {fileID: 5283363350038355971, guid: ea1cc5e906259fd478f201c2a229261b,
+    type: 3}
+  player1Selector: {fileID: 0}
+  player2Selector: {fileID: 0}
+  mapSelector: {fileID: 0}
+--- !u!4 &914644172
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914644170}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1349.9299, y: 615.36896, z: -25.410522}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &942595490
 GameObject:
   m_ObjectHideFlags: 0

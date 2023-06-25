@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class SwitchMap : MonoBehaviour
 {
-   // Start is called before the first frame update
     public Sprite[] Maps;
     public Sprite[] Texts;
-    int index;
+    public static int index;
 
     Image preview;
 
@@ -22,6 +21,11 @@ public class SwitchMap : MonoBehaviour
         preview.sprite = Maps[index];
         textPreview = textArea.GetComponent<Image>();
         textPreview.sprite = Texts[index];
+    }
+
+    public int GetIndex()
+    {
+        return index;
     }
 
     public void Next()

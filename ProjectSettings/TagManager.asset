@@ -9,6 +9,8 @@ TagManager:
   - GoboBase
   - Spawn1
   - Spawn2
+  - Player1Selector
+  - Player2Selector
   layers:
   - Default
   - TransparentFX

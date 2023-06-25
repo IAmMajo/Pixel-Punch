@@ -8,19 +8,26 @@ public class Switch : MonoBehaviour
     // Start is called before the first frame update
     public Sprite[] Gobos;
     public Sprite[] Texts;
-    int index;
+    public int index;
 
     Image preview;
     [SerializeField]
     GameObject textArea;
     Image textPreview;
+    [SerializeField]
+    GameObject remeberer;
     void Start()
     {
-        index = 0;
         preview = GetComponent<Image>();
-        preview.sprite = Gobos[index];
+
         textPreview = textArea.GetComponent<Image>();
+    }
+
+    void Update()
+    {
+        preview.sprite = Gobos[index];
         textPreview.sprite = Texts[index];
+
     }
 
     public void Next()
@@ -33,9 +40,6 @@ public class Switch : MonoBehaviour
         {
             index = 0;
         }
-
-        preview.sprite = Gobos[index];
-        textPreview.sprite = Texts[index];
     }
 
     public void Previous()
@@ -48,8 +52,5 @@ public class Switch : MonoBehaviour
         {
             index = Gobos.Length - 1;
         }
-
-        preview.sprite = Gobos[index];
-        textPreview.sprite = Texts[index];
     }
 }
