@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Test/TestScene.unity
     guid: abbbb84da07079c45abd705eb67d8293
   - enabled: 1
+    path: Assets/Test/SelectMenu.unity
+    guid: 20702679058a1814fa219e1ac31ee795
+  - enabled: 1
+    path: Assets/Test/MapSelect.unity
+    guid: 7e3aa17782cf4044685b09bde31668ce
+  - enabled: 1
     path: Assets/OutdoorsScene.unity
     guid: 8124e5870f4fd4c779e7a5f994e84ad1
   m_configObjects: {}
