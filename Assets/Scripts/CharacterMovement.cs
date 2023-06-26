@@ -136,7 +136,7 @@ public class CharacterMovement : MonoBehaviour
         if (jumpCount <= 2)
         {
             //divison trough jumpcount to make second jump smaller
-            rg.AddForce(new Vector3(0, 10 / (jumpCount + 1), 0), ForceMode.Impulse);
+            rg.AddForce(new Vector3(0, 15 / (jumpCount + 1), 0), ForceMode.Impulse);
             jumpCount++;
         }
 
