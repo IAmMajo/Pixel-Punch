@@ -28,12 +28,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: af246a3f12256e54c96e55600cffc7e7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.8984632
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: af246a3f12256e54c96e55600cffc7e7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5000005
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: af246a3f12256e54c96e55600cffc7e7,
         type: 3}
@@ -346,15 +346,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af246a3f12256e54c96e55600cffc7e7,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 456637435025427808}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af246a3f12256e54c96e55600cffc7e7,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: -7969989340412322615}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af246a3f12256e54c96e55600cffc7e7,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 226588305509250409}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af246a3f12256e54c96e55600cffc7e7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 456637435025427808}
   m_SourcePrefab: {fileID: 100100000, guid: af246a3f12256e54c96e55600cffc7e7, type: 3}
 --- !u!1 &5283363350038355971 stripped
 GameObject:
@@ -434,19 +434,6 @@ MonoBehaviour:
   heavyAttackTime: 1
   heavyAttackAnimationTime: 1.5
   charactorSelector: 1
---- !u!114 &456637435025427808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5283363350038355971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 079394bb2a0191a418b15a54dae3b48a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealthPoints: 10
 --- !u!95 &-7969989340412322615
 Animator:
   serializedVersion: 5
@@ -563,3 +550,17 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &456637435025427808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5283363350038355971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 079394bb2a0191a418b15a54dae3b48a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealthPoints: 10
+  totalRespawns: 3

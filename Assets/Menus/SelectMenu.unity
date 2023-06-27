@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 262.38358, g: 325.10843, b: 430.30963, a: 1}
+  m_IndirectSpecularColor: {r: 262.30203, g: 324.99054, b: 430.14313, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -214,12 +214,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Gobos:
   - {fileID: 21300000, guid: 15e7755104098764fa22771501c38aee, type: 3}
-  - {fileID: 21300000, guid: 52cc3f96c13b19948b37f99de9647ec5, type: 3}
   - {fileID: 21300000, guid: 0efea3472c529524ba1085fa0721a7de, type: 3}
+  - {fileID: 21300000, guid: 52cc3f96c13b19948b37f99de9647ec5, type: 3}
   Texts:
   - {fileID: 21300000, guid: 17097d41ea9de894591ce11c321865bb, type: 3}
-  - {fileID: 21300000, guid: 4cf25f55f2852fe4f8bf06d841cbaac7, type: 3}
   - {fileID: 21300000, guid: 61bf463a7d36ae549b2a52243a3b4faa, type: 3}
+  - {fileID: 21300000, guid: 4cf25f55f2852fe4f8bf06d841cbaac7, type: 3}
   index: 0
   textArea: {fileID: 626331940}
   remeberer: {fileID: 0}
@@ -737,12 +737,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Gobos:
   - {fileID: 21300000, guid: 15e7755104098764fa22771501c38aee, type: 3}
-  - {fileID: 21300000, guid: 52cc3f96c13b19948b37f99de9647ec5, type: 3}
   - {fileID: 21300000, guid: 0efea3472c529524ba1085fa0721a7de, type: 3}
+  - {fileID: 21300000, guid: 52cc3f96c13b19948b37f99de9647ec5, type: 3}
   Texts:
   - {fileID: 21300000, guid: 17097d41ea9de894591ce11c321865bb, type: 3}
-  - {fileID: 21300000, guid: 4cf25f55f2852fe4f8bf06d841cbaac7, type: 3}
   - {fileID: 21300000, guid: 61bf463a7d36ae549b2a52243a3b4faa, type: 3}
+  - {fileID: 21300000, guid: 4cf25f55f2852fe4f8bf06d841cbaac7, type: 3}
   index: 0
   textArea: {fileID: 888715434}
   remeberer: {fileID: 0}

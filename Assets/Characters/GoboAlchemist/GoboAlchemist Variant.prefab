@@ -27,17 +27,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e9c0e6a12b515054aa9cdd59ff4df1ce,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.60842735
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e9c0e6a12b515054aa9cdd59ff4df1ce,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.7200003
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e9c0e6a12b515054aa9cdd59ff4df1ce,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.1917319
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e9c0e6a12b515054aa9cdd59ff4df1ce,
         type: 3}
@@ -549,3 +549,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealthPoints: 10
+  totalRespawns: 3
