@@ -545,8 +545,24 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7ad820b9-3470-4ebe-bc91-1c7ab905aef4
     m_ActionName: Gameplay/HeavyAttack[/XInputControllerWindows/buttonEast,/Keyboard/j]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1824704011056314397}
+        m_TargetAssemblyTypeName: CharacterMovement, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 422384ca-ab29-4b84-80ee-405253f46c93
+    m_ActionName: Gameplay/Pause[/Keyboard/escape,/XInputControllerWindows/start]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Scheme
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

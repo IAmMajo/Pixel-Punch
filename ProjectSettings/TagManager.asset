@@ -11,6 +11,7 @@ TagManager:
   - Spawn2
   - Player1Selector
   - Player2Selector
+  - PauseMenuOverlay
   layers:
   - Default
   - TransparentFX

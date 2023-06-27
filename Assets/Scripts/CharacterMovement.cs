@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -47,6 +46,8 @@ public class CharacterMovement : MonoBehaviour
 
     float jumpCount = 0;
 
+    GameObject pauseMenu;
+
 
     void Awake()
     {
@@ -63,6 +64,17 @@ public class CharacterMovement : MonoBehaviour
                 spChAc = null;
                 break;
         }
+;
+
+        foreach (Canvas canvas in Resources.FindObjectsOfTypeAll<Canvas>())
+        {
+            if (canvas.CompareTag("PauseMenuOverlay"))
+            {
+                pauseMenu = canvas.gameObject;
+                break;
+            }
+        }
+        Debug.Log(pauseMenu);
     }
 
     public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
@@ -72,13 +84,30 @@ public class CharacterMovement : MonoBehaviour
     public void OnBasicAttack(InputAction.CallbackContext ctx) => basicAttacked = ctx.performed;
     public void OnHeavyAttack(InputAction.CallbackContext ctx) => heavyAttacked = ctx.performed;
 
+    bool paused = false;
+
+    public void OnPause(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            paused = !paused;
+
+            if (paused)
+            {
+                PauseGame();
+            }
+            else
+            {
+                ResumeGame();
+            }
+        }
+    }
 
     private bool invoked;
 
     void Update()
     {
-
-        if (!invoked)
+        if (!invoked && Time.timeScale > 0)
         {
             //as the objects are supposed to only move along one axis, but the controller gives us values for two and the functions wants to have three some tricking is required
             transform.Translate(new Vector3(movementInput.x * moveSpeed * Time.deltaTime, 0, 0), Space.World);
@@ -161,7 +190,7 @@ public class CharacterMovement : MonoBehaviour
           heavyAttackCorrectionVector.z * GetSign(transform.rotation.y));
         GameObject attack = Instantiate(heavyAttackObject, transform.position + correctionVectorCurrent, transform.rotation);
         attack.GetComponent<AttackScript>().creator = this.gameObject;
-         attack.GetComponent<AttackScript>().correctionVector = correctionVectorCurrent;
+        attack.GetComponent<AttackScript>().correctionVector = correctionVectorCurrent;
         heavyAttacked = false;
     }
 
@@ -175,6 +204,18 @@ public class CharacterMovement : MonoBehaviour
         jumped = false;
     }
 
+    void PauseGame()
+    {
+        Time.timeScale = 0f;
+        pauseMenu.SetActive(true);
+    }
+
+    void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        pauseMenu.SetActive(false);
+    }
+
     void OnCollisionEnter(Collision e)
     {
         //checks if collision happens with a Object that is tagged as Ground and that is lower to prevent wall jumps
@@ -183,4 +224,6 @@ public class CharacterMovement : MonoBehaviour
             jumpCount = 0;
         }
     }
+
+
 }
