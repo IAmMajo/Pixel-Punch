@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 262.30203, g: 324.99054, b: 430.14313, a: 1}
+  m_IndirectSpecularColor: {r: 262.38358, g: 325.10843, b: 430.30963, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1900,6 +1900,7 @@ GameObject:
   - component: {fileID: 898000817}
   - component: {fileID: 898000816}
   - component: {fileID: 898000818}
+  - component: {fileID: 898000819}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1978,6 +1979,20 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!114 &898000819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898000814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7abfa30230b99b1479ca4bd91d3657b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColor: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 1}
+  selectionColor: {r: 1, g: 0.89253694, b: 0.827451, a: 1}
 --- !u!1 &939251223
 GameObject:
   m_ObjectHideFlags: 0
