@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Hitable : MonoBehaviour
 {
@@ -50,13 +51,16 @@ public class Hitable : MonoBehaviour
         }
     }
 
-    void Update() {
-        if (this.transform.position.y < -50) {
+    void Update()
+    {
+        if (this.transform.position.y < -50)
+        {
             this.onDamage(this.maxHealthPoints);
         }
     }
 
-    void onDamage(int damage) {
+    void onDamage(int damage)
+    {
         if (damage < this.currentHealthPoints)
         {
             this.currentHealthPoints -= damage;
@@ -71,6 +75,8 @@ public class Hitable : MonoBehaviour
                 this.gameObject.SetActive(false);
                 this.healthGameObject.SetActive(false);
                 this.currentRespawns = this.totalRespawns;
+                SceneManager.LoadScene("Assets/Menus/SelectMenu.unity");
+
             }
             else
             {
