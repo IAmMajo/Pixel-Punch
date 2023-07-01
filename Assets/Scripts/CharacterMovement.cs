@@ -64,7 +64,7 @@ public class CharacterMovement : MonoBehaviour
                 spChAc = null;
                 break;
         }
-;
+        
 
         foreach (CanvasRenderer canvas in Resources.FindObjectsOfTypeAll<CanvasRenderer>())
         {
@@ -74,6 +74,7 @@ public class CharacterMovement : MonoBehaviour
                 break;
             }
         }
+        rg.useGravity = false;
     }
 
     public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
@@ -106,6 +107,8 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
+
+        rg.AddForce(-13.5f*Vector3.up);
         if (!invoked && Time.timeScale > 0)
         {
             //as the objects are supposed to only move along one axis, but the controller gives us values for two and the functions wants to have three some tricking is required
@@ -164,7 +167,7 @@ public class CharacterMovement : MonoBehaviour
         if (jumpCount < 2)
         {
             //divison trough jumpcount to make second jump smaller
-            rg.AddForce(new Vector3(0, 15 / (jumpCount + 1), 0), ForceMode.Impulse);
+            rg.AddForce(new Vector3(0, 22 / (jumpCount + 1), 0), ForceMode.Impulse);
             jumpCount++;
         }
 
