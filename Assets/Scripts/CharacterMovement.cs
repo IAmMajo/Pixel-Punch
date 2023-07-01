@@ -66,7 +66,7 @@ public class CharacterMovement : MonoBehaviour
         }
 ;
 
-        foreach (Canvas canvas in Resources.FindObjectsOfTypeAll<Canvas>())
+        foreach (CanvasRenderer canvas in Resources.FindObjectsOfTypeAll<CanvasRenderer>())
         {
             if (canvas.CompareTag("PauseMenuOverlay"))
             {
@@ -74,7 +74,6 @@ public class CharacterMovement : MonoBehaviour
                 break;
             }
         }
-        Debug.Log(pauseMenu);
     }
 
     public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
@@ -162,7 +161,7 @@ public class CharacterMovement : MonoBehaviour
 
     void Jump()
     {
-        if (jumpCount <= 2)
+        if (jumpCount < 2)
         {
             //divison trough jumpcount to make second jump smaller
             rg.AddForce(new Vector3(0, 15 / (jumpCount + 1), 0), ForceMode.Impulse);

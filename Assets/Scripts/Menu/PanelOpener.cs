@@ -1,17 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
 public class PanelOpener : MonoBehaviour
 {
 
-    public GameObject Panel;
+    public GameObject settings;
+    public GameObject dBtSettings;
+    public GameObject defaulOverlay;
+    public GameObject dBtDefaultOverlay;
 
-    public void OpenSettings(){
-        if(Panel != null)
-        {
-            Panel.SetActive(true);
-        }
+
+    public void OpenSettings()
+    {
+        settings.SetActive(true);
+        defaulOverlay.SetActive(false);
     }
-    
+
+    public void CloseSettings()
+    {
+        settings.SetActive(false);
+        defaulOverlay.SetActive(true);
+    }
+
 }

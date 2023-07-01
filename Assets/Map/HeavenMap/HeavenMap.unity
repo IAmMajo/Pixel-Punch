@@ -2247,12 +2247,27 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 42964654}
     m_Modifications:
+    - target: {fileID: 806245588358810818, guid: abafbd96cb1c3c148a7f17ff35db7283,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515464935539762521, guid: abafbd96cb1c3c148a7f17ff35db7283,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2324146675253918858, guid: abafbd96cb1c3c148a7f17ff35db7283,
         type: 3}
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
     - target: {fileID: 2324146675253918858, guid: abafbd96cb1c3c148a7f17ff35db7283,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3326552588691905466, guid: abafbd96cb1c3c148a7f17ff35db7283,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2380,6 +2395,11 @@ PrefabInstance:
     - target: {fileID: 4397127186863627357, guid: abafbd96cb1c3c148a7f17ff35db7283,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5277106156884765509, guid: abafbd96cb1c3c148a7f17ff35db7283,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
