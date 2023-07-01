@@ -24,6 +24,6 @@ public class GoboMageHeavyAttackBehavior : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(new Vector3(Random.Range(-10,10),Random.Range(-10,10),Random.Range(-10,10)));
+        transform.Rotate(new Vector3(Random.Range(-10,10),Random.Range(-1,1),Random.Range(-10,10)));
     }
 }
