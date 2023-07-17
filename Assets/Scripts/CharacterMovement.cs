@@ -2,15 +2,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 public class CharacterMovement : MonoBehaviour
 {
-
-
     Rigidbody rg;
 
     Animator animator;
-
 
     [SerializeField]
     float moveSpeed;
@@ -25,17 +21,22 @@ public class CharacterMovement : MonoBehaviour
 
     [SerializeField]
     Vector3 basicAttackCorrectionVector;
+
     [SerializeField]
     float basicAttackTime;
+
     [SerializeField]
     float basicAttackAnimationTime;
+
     [SerializeField]
     GameObject heavyAttackObject;
+
     [SerializeField]
     Vector3 heavyAttackCorrectionVector;
 
     [SerializeField]
     float heavyAttackTime;
+
     [SerializeField]
     float heavyAttackAnimationTime;
 
@@ -47,7 +48,6 @@ public class CharacterMovement : MonoBehaviour
     float jumpCount = 0;
 
     GameObject pauseMenu;
-
 
     void Awake()
     {
@@ -64,7 +64,6 @@ public class CharacterMovement : MonoBehaviour
                 spChAc = null;
                 break;
         }
-        
 
         foreach (CanvasRenderer canvas in Resources.FindObjectsOfTypeAll<CanvasRenderer>())
         {
@@ -75,6 +74,36 @@ public class CharacterMovement : MonoBehaviour
             }
         }
         rg.useGravity = false;
+        bool gp = false;
+        foreach (InputDevice item in this.GetComponent<PlayerInput>().devices)
+        {
+            if (item == Gamepad.current)
+            {
+                gp = true;
+            }
+        }
+        if (!gp)
+        {
+            PlayerInput[] pIS = GetComponents<PlayerInput>();
+            bool controllScheme1Used = false;
+            foreach (PlayerInput pI in pIS)
+            {
+                if (pI.currentControlScheme == "Keyboard")
+                {
+                    controllScheme1Used = true;
+                }
+            }
+            if (!controllScheme1Used)
+            {
+                this.GetComponent<PlayerInput>()
+                    .SwitchCurrentControlScheme("KeyboardArrow", Keyboard.current);
+            }
+            else
+            {
+                this.GetComponent<PlayerInput>()
+                    .SwitchCurrentControlScheme("Keyboard", Keyboard.current);
+            }
+        }
     }
 
     public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
@@ -82,7 +111,43 @@ public class CharacterMovement : MonoBehaviour
     public void OnJumped(InputAction.CallbackContext ctx) => jumped = ctx.performed;
 
     public void OnBasicAttack(InputAction.CallbackContext ctx) => basicAttacked = ctx.performed;
+
     public void OnHeavyAttack(InputAction.CallbackContext ctx) => heavyAttacked = ctx.performed;
+
+    public void OnControllerLost(PlayerInput ctx)
+    {
+        PlayerInput[] pIS = GetComponents<PlayerInput>();
+        bool controllScheme1Used = false;
+        foreach (PlayerInput pI in pIS)
+        {
+            if (pI.currentControlScheme == "Keyboard")
+            {
+                controllScheme1Used = true;
+            }
+        }
+        if (controllScheme1Used)
+        {
+            this.GetComponent<PlayerInput>()
+                .SwitchCurrentControlScheme("KeyboardArrow", Keyboard.current);
+        }
+        else
+        {
+            this.GetComponent<PlayerInput>()
+                .SwitchCurrentControlScheme("Keyboard", Keyboard.current);
+        }
+        Debug.Log("a " + this);
+    }
+
+    public void OnControllerConnected(PlayerInput ctx)
+    {
+        ctx.SwitchCurrentControlScheme("Gamepad", Gamepad.current);
+        Debug.Log("b " + this);
+    }
+
+    public void OnControllsChanged(PlayerInput ctx)
+    {
+        Debug.Log("c " + this);
+    }
 
     bool paused = false;
 
@@ -107,18 +172,22 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
-
-        rg.AddForce(-13.5f*Vector3.up);
+        rg.AddForce(-13.5f * Vector3.up);
         if (!invoked && Time.timeScale > 0)
         {
             //as the objects are supposed to only move along one axis, but the controller gives us values for two and the functions wants to have three some tricking is required
-            transform.Translate(new Vector3(movementInput.x * moveSpeed * Time.deltaTime, 0, 0), Space.World);
+            transform.Translate(
+                new Vector3(movementInput.x * moveSpeed * Time.deltaTime, 0, 0),
+                Space.World
+            );
             animator.SetFloat("Walking", Mathf.Abs(movementInput.x));
             if (GetSign(movementInput.x) != 0)
             {
-                transform.rotation = Quaternion.LookRotation(new Vector3(GetSign(movementInput.x), 0, 0), Vector3.up);
+                transform.rotation = Quaternion.LookRotation(
+                    new Vector3(GetSign(movementInput.x), 0, 0),
+                    Vector3.up
+                );
             }
-
 
             if (jumped)
             {
@@ -129,7 +198,8 @@ public class CharacterMovement : MonoBehaviour
             if (basicAttacked)
             {
                 invoked = true;
-                animator.SetTrigger("BasicAttack"); if (spChAc != null)
+                animator.SetTrigger("BasicAttack");
+                if (spChAc != null)
                 {
                     spChAc.BasicAttackBehavior();
                 }
@@ -157,8 +227,10 @@ public class CharacterMovement : MonoBehaviour
 
     int GetSign(float pValue)
     {
-        if (pValue > 0) return 1;
-        if (pValue < 0) return -1;
+        if (pValue > 0)
+            return 1;
+        if (pValue < 0)
+            return -1;
         return 0;
     }
 
@@ -170,16 +242,20 @@ public class CharacterMovement : MonoBehaviour
             rg.AddForce(new Vector3(0, 22 / (jumpCount + 1), 0), ForceMode.Impulse);
             jumpCount++;
         }
-
     }
 
     void BasicAttackMethod()
     {
-        Vector3 correctionVectorCurrent = new Vector3(basicAttackCorrectionVector.x * GetSign(transform.rotation.y),
+        Vector3 correctionVectorCurrent = new Vector3(
+            basicAttackCorrectionVector.x * GetSign(transform.rotation.y),
             basicAttackCorrectionVector.y,
-            basicAttackCorrectionVector.z * GetSign(transform.rotation.y));
-        GameObject attack = Instantiate(basicAttackObject, transform.position + correctionVectorCurrent,
-            transform.rotation);
+            basicAttackCorrectionVector.z * GetSign(transform.rotation.y)
+        );
+        GameObject attack = Instantiate(
+            basicAttackObject,
+            transform.position + correctionVectorCurrent,
+            transform.rotation
+        );
         attack.GetComponent<AttackScript>().creator = this.gameObject;
         attack.GetComponent<AttackScript>().correctionVector = correctionVectorCurrent;
         basicAttacked = false;
@@ -187,10 +263,16 @@ public class CharacterMovement : MonoBehaviour
 
     void HeavyAttackMethod()
     {
-        Vector3 correctionVectorCurrent = new Vector3(heavyAttackCorrectionVector.x * GetSign(transform.rotation.y),
-          heavyAttackCorrectionVector.y,
-          heavyAttackCorrectionVector.z * GetSign(transform.rotation.y));
-        GameObject attack = Instantiate(heavyAttackObject, transform.position + correctionVectorCurrent, transform.rotation);
+        Vector3 correctionVectorCurrent = new Vector3(
+            heavyAttackCorrectionVector.x * GetSign(transform.rotation.y),
+            heavyAttackCorrectionVector.y,
+            heavyAttackCorrectionVector.z * GetSign(transform.rotation.y)
+        );
+        GameObject attack = Instantiate(
+            heavyAttackObject,
+            transform.position + correctionVectorCurrent,
+            transform.rotation
+        );
         attack.GetComponent<AttackScript>().creator = this.gameObject;
         attack.GetComponent<AttackScript>().correctionVector = correctionVectorCurrent;
         heavyAttacked = false;
@@ -221,11 +303,12 @@ public class CharacterMovement : MonoBehaviour
     void OnCollisionEnter(Collision e)
     {
         //checks if collision happens with a Object that is tagged as Ground and that is lower to prevent wall jumps
-        if (e.gameObject.tag == "Ground" && e.gameObject.transform.position.y < base.transform.position.y)
+        if (
+            e.gameObject.tag == "Ground"
+            && e.gameObject.transform.position.y < base.transform.position.y
+        )
         {
             jumpCount = 0;
         }
     }
-
-
 }
