@@ -51,6 +51,7 @@ public class CharacterMovement : MonoBehaviour
 
     void Awake()
     {
+        moveSpeed *= 1.2f;
         rg = this.GetComponent<Rigidbody>();
         animator = this.GetComponent<Animator>();
         switch (charactorSelector)
@@ -135,18 +136,15 @@ public class CharacterMovement : MonoBehaviour
             this.GetComponent<PlayerInput>()
                 .SwitchCurrentControlScheme("Keyboard", Keyboard.current);
         }
-        Debug.Log("a " + this);
     }
 
     public void OnControllerConnected(PlayerInput ctx)
     {
         ctx.SwitchCurrentControlScheme("Gamepad", Gamepad.current);
-        Debug.Log("b " + this);
     }
 
     public void OnControllsChanged(PlayerInput ctx)
     {
-        Debug.Log("c " + this);
     }
 
     bool paused = false;
@@ -177,7 +175,7 @@ public class CharacterMovement : MonoBehaviour
         {
             //as the objects are supposed to only move along one axis, but the controller gives us values for two and the functions wants to have three some tricking is required
             transform.Translate(
-                new Vector3(movementInput.x * moveSpeed * Time.deltaTime, 0, 0),
+                new Vector3(movementInput.x * moveSpeed * ((GetSign(jumpCount)*0.8f)+1f) * Time.deltaTime, 0, 0),
                 Space.World
             );
             animator.SetFloat("Walking", Mathf.Abs(movementInput.x));

@@ -10,7 +10,6 @@ public class GoboBaseHeavyAttack : MonoBehaviour
     {
         pos = this.GetComponent<AttackScript>().creator.transform;
         correctionVector = this.GetComponent<AttackScript>().correctionVector;
-        Debug.Log(correctionVector);
     }
 
     void Update(){

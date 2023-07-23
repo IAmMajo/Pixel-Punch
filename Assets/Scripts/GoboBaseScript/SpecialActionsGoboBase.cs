@@ -26,13 +26,13 @@ public class SpecialActionsGoboBase : MonoBehaviour, SpecialCharacterActions
     IEnumerator StartJump()
     {
         yield return new WaitForSeconds(0.01f);
-        rg.AddForce(new Vector3(2 * tr.forward.x, 2, 0), ForceMode.Impulse);
+        rg.AddForce(new Vector3(2 * tr.forward.x, 2, 0)*6f, ForceMode.Impulse);
     }
 
     IEnumerator Dash()
     {
         yield return new WaitForSeconds(0.2f);
-        rg.AddForce(tr.forward * 15, ForceMode.Impulse);
+        rg.AddForce(tr.forward * 15f*1.5f, ForceMode.Impulse);
     }
 
    
