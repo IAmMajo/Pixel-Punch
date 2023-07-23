@@ -25,6 +25,7 @@ public class MapSetup : MonoBehaviour
     string[] scenes = {"Map/HeavenMap/HeavenMap","Map/CaveMap/CaveMap"};
     void Start()
     {
+        Time.timeScale = 1f;
         GameObject o1 = GameObject.FindGameObjectWithTag("Player1Selector");
         GameObject o2 = GameObject.FindGameObjectWithTag("Player2Selector");
         if (o1 != null && o2 != null)

@@ -75,36 +75,29 @@ public class CharacterMovement : MonoBehaviour
             }
         }
         rg.useGravity = false;
-        bool gp = false;
-        foreach (InputDevice item in this.GetComponent<PlayerInput>().devices)
-        {
-            if (item == Gamepad.current)
-            {
-                gp = true;
-            }
-        }
-        if (!gp)
-        {
-            PlayerInput[] pIS = GetComponents<PlayerInput>();
-            bool controllScheme1Used = false;
-            foreach (PlayerInput pI in pIS)
-            {
-                if (pI.currentControlScheme == "Keyboard")
-                {
-                    controllScheme1Used = true;
-                }
-            }
-            if (!controllScheme1Used)
-            {
+         
+         if (GetComponent<PlayerInput>().currentControlScheme != "Gamepad")
+         {
+             PlayerInput[] pIS = GetComponents<PlayerInput>();
+             bool controllScheme1Used = false;
+             foreach (PlayerInput pI in pIS)
+             {
+                 if (pI.currentControlScheme == "Keyboard")
+                 {
+                     controllScheme1Used = true;
+                 }
+             }
+             if (!controllScheme1Used)
+             {
                 this.GetComponent<PlayerInput>()
-                    .SwitchCurrentControlScheme("KeyboardArrow", Keyboard.current);
+                     .SwitchCurrentControlScheme("KeyboardArrow", Keyboard.current);
             }
-            else
-            {
-                this.GetComponent<PlayerInput>()
-                    .SwitchCurrentControlScheme("Keyboard", Keyboard.current);
-            }
-        }
+             else
+             {
+                 this.GetComponent<PlayerInput>()
+                     .SwitchCurrentControlScheme("Keyboard", Keyboard.current);
+             }
+         }
     }
 
     public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
@@ -126,7 +119,7 @@ public class CharacterMovement : MonoBehaviour
                 controllScheme1Used = true;
             }
         }
-        if (controllScheme1Used)
+        if (!controllScheme1Used)
         {
             this.GetComponent<PlayerInput>()
                 .SwitchCurrentControlScheme("KeyboardArrow", Keyboard.current);
@@ -151,6 +144,9 @@ public class CharacterMovement : MonoBehaviour
 
     public void OnPause(InputAction.CallbackContext ctx)
     {
+        foreach(InputDevice e in this.GetComponent<PlayerInput>().devices){
+Debug.Log(this.GetInstanceID() +" " + e);
+        }
         if (ctx.started)
         {
             paused = !paused;
