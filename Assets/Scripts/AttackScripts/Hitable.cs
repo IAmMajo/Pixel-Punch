@@ -1,8 +1,6 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class Hitable : MonoBehaviour
 {
@@ -94,39 +92,37 @@ public class Hitable : MonoBehaviour
     void endscreen()
     {
         //death
-        int winner = this.tag != "Player1" ? 1 : 2;
-        Instantiate(winscreen);
-        GameObject.FindWithTag("PlayerWonTextBox").GetComponent<TextMeshProUGUI>().text =
-            "Player " + winner + " won";
+        Canvas ws = Instantiate(winscreen);
+        Endscreen es = ws.GetComponent<Endscreen>();
+        es.winner = this.tag != "Player1" ? 1 : 2;
+
         Hitable[] hitables = FindObjectsOfType<Hitable>();
 
         foreach (Hitable hitable in hitables)
         {
             if (hitable.gameObject.GetInstanceID() == this.gameObject.GetInstanceID())
             {
-                GameObject.FindWithTag("LooserScreen").GetComponent<Image>().sprite =
-                    Resources.Load(checkGoboType(this.gameObject)) as Sprite;
+                es.loserGobo = checkGoboType(hitable.gameObject);
             }
             else
             {
-                GameObject.FindWithTag("WinnerScreen").GetComponent<Image>().sprite =
-                    Resources.Load(checkGoboType(hitable.gameObject)) as Sprite;
-                Debug.Log(Resources.Load(checkGoboType(hitable.gameObject)) as Sprite);
+                es.winnerGobo = checkGoboType(hitable.gameObject);
             }
         }
         Time.timeScale = 0;
     }
 
-    string checkGoboType(GameObject pGO)
+    int checkGoboType(GameObject pGO)
     {
+        Debug.Log(pGO.name);
         switch (pGO.name)
         {
-            case "MageGobo Variant(Clone)":
-                return "Assets/Sprites/GoboSprites/MageGobo";
-            case "AlchemistGobo Variant(Clone)":
-                return "Assets/Sprites/GoboSprites/StoneGobo";
+            case "GoboMage Variant(Clone)":
+                return 1;
+            case "GoboAlchemist Variant(Clone)":
+                return 2;
             default:
-                return "Assets/Sprites/GoboSprites/BaseGobo";
+                return 0;
         }
     }
 
