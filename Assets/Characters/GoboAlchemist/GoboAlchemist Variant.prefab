@@ -602,3 +602,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealthPoints: 10
   totalRespawns: 3
+  winscreen: {fileID: 7802562532813727619, guid: 91c736041b610c34ab4f7e5a3dcf7547,
+    type: 3}

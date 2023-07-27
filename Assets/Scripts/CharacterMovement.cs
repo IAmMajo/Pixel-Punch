@@ -97,7 +97,7 @@ public class CharacterMovement : MonoBehaviour
                      .SwitchCurrentControlScheme("Keyboard", Keyboard.current);
              }
          }
-         Debug.Log(this.gameObject.name);
+         Debug.Log(this.gameObject.name == "GoboBase Variant(Clone)");
     }
 
     public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();

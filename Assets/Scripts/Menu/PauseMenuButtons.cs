@@ -22,6 +22,7 @@ public class PauseMenuButtons : MonoBehaviour
     public void Settings() { }
     public void MainMenu()
     {
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         SceneManager.LoadScene("Assets/Menus/StartMenu.unity");
     }
 }

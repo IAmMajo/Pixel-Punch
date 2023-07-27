@@ -2,11 +2,10 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Hitable : MonoBehaviour
 {
-
     [SerializeField]
     int maxHealthPoints;
 
@@ -20,6 +19,9 @@ public class Hitable : MonoBehaviour
     GameObject healthGameObject;
     bool iFrames;
 
+    [SerializeField]
+    Canvas winscreen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +29,8 @@ public class Hitable : MonoBehaviour
         this.initialRotation = this.transform.rotation;
         this.currentHealthPoints = this.maxHealthPoints;
         this.currentRespawns = this.totalRespawns;
-
-        if (this.gameObject.GetComponent<PlayerInput>()?.user.id == 1)
+        int taggedID = this.tag == "Player1" ? 1 : 2;
+        if (taggedID == 1)
         {
             this.healthGameObject = GameObject.Find("Player 1 Health");
         }
@@ -40,11 +42,10 @@ public class Hitable : MonoBehaviour
 
     void OnTriggerEnter(Collider e)
     {
-        if
-        (
-            e.gameObject.tag == "Attack" &&
-            e.gameObject.GetComponent<AttackScript>().creator != this.gameObject &&
-            !this.iFrames
+        if (
+            e.gameObject.tag == "Attack"
+            && e.gameObject.GetComponent<AttackScript>().creator != this.gameObject
+            && !this.iFrames
         )
         {
             this.onDamage(e.gameObject.GetComponent<AttackScript>().damage);
@@ -70,13 +71,11 @@ public class Hitable : MonoBehaviour
         else
         {
             this.currentHealthPoints = this.maxHealthPoints;
+
             if (this.currentRespawns == 1)
             {
-                this.gameObject.SetActive(false);
-                this.healthGameObject.SetActive(false);
-                this.currentRespawns = this.totalRespawns;
-                SceneManager.LoadScene("Assets/Menus/SelectMenu.unity");
-
+                this.transform.position = this.initialPosition;
+                endscreen();
             }
             else
             {
@@ -88,8 +87,47 @@ public class Hitable : MonoBehaviour
             }
         }
         this.healthGameObject.GetComponent<TextMeshProUGUI>().text =
-            $"{this.currentHealthPoints} / {this.maxHealthPoints} Health\n" +
-            $"{this.currentRespawns} / {this.totalRespawns} Respawns";
+            $"{this.currentHealthPoints} / {this.maxHealthPoints} Health\n"
+            + $"{this.currentRespawns} / {this.totalRespawns} Respawns";
+    }
+
+    void endscreen()
+    {
+        //death
+        int winner = this.tag != "Player1" ? 1 : 2;
+        Instantiate(winscreen);
+        GameObject.FindWithTag("PlayerWonTextBox").GetComponent<TextMeshProUGUI>().text =
+            "Player " + winner + " won";
+        Hitable[] hitables = FindObjectsOfType<Hitable>();
+
+        foreach (Hitable hitable in hitables)
+        {
+            if (hitable.gameObject.GetInstanceID() == this.gameObject.GetInstanceID())
+            {
+                GameObject.FindWithTag("LooserScreen").GetComponent<Image>().sprite =
+                    Resources.Load(checkGoboType(this.gameObject)) as Sprite;
+            }
+            else
+            {
+                GameObject.FindWithTag("WinnerScreen").GetComponent<Image>().sprite =
+                    Resources.Load(checkGoboType(hitable.gameObject)) as Sprite;
+                Debug.Log(Resources.Load(checkGoboType(hitable.gameObject)) as Sprite);
+            }
+        }
+        Time.timeScale = 0;
+    }
+
+    string checkGoboType(GameObject pGO)
+    {
+        switch (pGO.name)
+        {
+            case "MageGobo Variant(Clone)":
+                return "Assets/Sprites/GoboSprites/MageGobo";
+            case "AlchemistGobo Variant(Clone)":
+                return "Assets/Sprites/GoboSprites/StoneGobo";
+            default:
+                return "Assets/Sprites/GoboSprites/BaseGobo";
+        }
     }
 
     IEnumerator resetIFrames()

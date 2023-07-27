@@ -5,24 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class MapSetup : MonoBehaviour
 {
-
     [SerializeField]
     GameObject goboBase;
+
     [SerializeField]
     GameObject goboAlch;
+
     [SerializeField]
     GameObject goboMage;
 
     [SerializeField]
     GameObject player1Selector;
+
     [SerializeField]
     GameObject player2Selector;
     public static int player1Selected;
     public static int player2Selected;
+
     [SerializeField]
     GameObject mapSelector;
     public static int mapSelected;
-    string[] scenes = {"Map/HeavenMap/HeavenMap","Map/CaveMap/CaveMap"};
+    string[] scenes = { "Map/HeavenMap/HeavenMap", "Map/CaveMap/CaveMap" };
+
     void Start()
     {
         Time.timeScale = 1f;
@@ -38,15 +42,12 @@ public class MapSetup : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().Equals(SceneManager.GetSceneByName(scene)))
             {
-                SpawnPlayer(player1Selected,1);
-                SpawnPlayer(player2Selected,2);
+                SpawnPlayer(player1Selected, 1);
+                SpawnPlayer(player2Selected, 2);
                 break;
             }
         }
-            
-        
     }
-
 
     public void ChangeToMap()
     {
@@ -57,35 +58,39 @@ public class MapSetup : MonoBehaviour
     {
         player1Selected = player1Selector.GetComponent<Switch>().index;
     }
+
     public void SetPlayer2Select()
     {
         player2Selected = player2Selector.GetComponent<Switch>().index;
     }
+
     public void SetMap()
     {
         mapSelected = mapSelector.GetComponent<SwitchMap>().GetIndex();
-     }
+    }
 
     void SpawnPlayer(int pCharID, int pPlayerNumber)
     {
         string spawnTag = "Spawn" + pPlayerNumber;
         GameObject spawn = GameObject.FindGameObjectWithTag(spawnTag);
-
+        GameObject o;
         switch (pCharID)
         {
             case 0:
-                Instantiate(goboBase, spawn.transform);
+                o = Instantiate(goboBase, spawn.transform);
+                o.tag = "Player" + pPlayerNumber;
                 break;
             case 1:
-                Instantiate(goboAlch, spawn.transform);
+                o = Instantiate(goboAlch, spawn.transform);
+                o.tag = "Player" + pPlayerNumber;
                 break;
             case 2:
-                Instantiate(goboMage, spawn.transform);
+                o = Instantiate(goboMage, spawn.transform);
+                o.tag = "Player" + pPlayerNumber;
                 break;
 
             default:
                 break;
         }
-
     }
 }
