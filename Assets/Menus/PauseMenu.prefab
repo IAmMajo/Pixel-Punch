@@ -191,8 +191,8 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_VertexColorAlwaysGammaSpace: 1
+  m_AdditionalShaderChannelsFlag: 1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -254,7 +254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2105488488696362045
 RectTransform:
   m_ObjectHideFlags: 0
@@ -631,12 +631,27 @@ PrefabInstance:
     - target: {fileID: 2324146675253918858, guid: a381f67dd4d18d048a2fb28fba736f44,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2324146675253918858, guid: a381f67dd4d18d048a2fb28fba736f44,
         type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960049934128487045, guid: a381f67dd4d18d048a2fb28fba736f44,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126228600925911995, guid: a381f67dd4d18d048a2fb28fba736f44,
+        type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126228600925911995, guid: a381f67dd4d18d048a2fb28fba736f44,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4397127186863627357, guid: a381f67dd4d18d048a2fb28fba736f44,
         type: 3}
@@ -761,12 +776,12 @@ PrefabInstance:
     - target: {fileID: 7083413541940943629, guid: a381f67dd4d18d048a2fb28fba736f44,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8968083394598990486, guid: a381f67dd4d18d048a2fb28fba736f44,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

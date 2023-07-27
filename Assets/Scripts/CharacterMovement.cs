@@ -61,7 +61,6 @@ public class CharacterMovement : MonoBehaviour
                 break;
 
             default:
-                Debug.Log("Ungültiger Character Selector");
                 spChAc = null;
                 break;
         }
@@ -98,6 +97,7 @@ public class CharacterMovement : MonoBehaviour
                      .SwitchCurrentControlScheme("Keyboard", Keyboard.current);
              }
          }
+         Debug.Log(this.gameObject.name);
     }
 
     public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
@@ -145,7 +145,6 @@ public class CharacterMovement : MonoBehaviour
     public void OnPause(InputAction.CallbackContext ctx)
     {
         foreach(InputDevice e in this.GetComponent<PlayerInput>().devices){
-Debug.Log(this.GetInstanceID() +" " + e);
         }
         if (ctx.started)
         {
@@ -233,7 +232,7 @@ Debug.Log(this.GetInstanceID() +" " + e);
         if (jumpCount < 2)
         {
             //divison trough jumpcount to make second jump smaller
-            rg.AddForce(new Vector3(0, 22 / (jumpCount + 1), 0)*1.2f, ForceMode.Impulse);
+            rg.AddForce(new Vector3(0, 22 / (jumpCount + 1), 0)*0.7f, ForceMode.Impulse);
             jumpCount++;
         }
     }
@@ -292,6 +291,7 @@ Debug.Log(this.GetInstanceID() +" " + e);
     {
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
+        
     }
 
     void OnCollisionEnter(Collision e)
