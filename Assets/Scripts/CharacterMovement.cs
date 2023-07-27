@@ -164,7 +164,7 @@ Debug.Log(this.GetInstanceID() +" " + e);
 
     private bool invoked;
 
-    void Update()
+    void FixedUpdate()
     {
         rg.AddForce(-13.5f * Vector3.up);
         if (!invoked && Time.timeScale > 0)
@@ -233,7 +233,7 @@ Debug.Log(this.GetInstanceID() +" " + e);
         if (jumpCount < 2)
         {
             //divison trough jumpcount to make second jump smaller
-            rg.AddForce(new Vector3(0, 22 / (jumpCount + 1), 0)*1.8f, ForceMode.Impulse);
+            rg.AddForce(new Vector3(0, 22 / (jumpCount + 1), 0)*1.2f, ForceMode.Impulse);
             jumpCount++;
         }
     }
