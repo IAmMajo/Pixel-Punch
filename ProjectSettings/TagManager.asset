@@ -12,6 +12,11 @@ TagManager:
   - Player1Selector
   - Player2Selector
   - PauseMenuOverlay
+  - PlayerWonTextBox
+  - WinnerScreen
+  - LooserScreen
+  - Player1
+  - Player2
   layers:
   - Default
   - TransparentFX
