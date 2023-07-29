@@ -1,9 +1,13 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hitable : MonoBehaviour
 {
+    [SerializeField]
+    Sprite image;
+
     [SerializeField]
     int maxHealthPoints;
 
@@ -36,6 +40,7 @@ public class Hitable : MonoBehaviour
         {
             this.healthGameObject = GameObject.Find("Player 2 Health");
         }
+        this.healthGameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = this.image;
     }
 
     void OnTriggerEnter(Collider e)
@@ -84,9 +89,14 @@ public class Hitable : MonoBehaviour
                 StartCoroutine(this.resetIFrames());
             }
         }
-        this.healthGameObject.GetComponent<TextMeshProUGUI>().text =
-            $"{this.currentHealthPoints} / {this.maxHealthPoints} Health\n"
-            + $"{this.currentRespawns} / {this.totalRespawns} Respawns";
+        for (int i = 1; i < 11; i++)
+        {
+            this.healthGameObject.transform.GetChild(i).gameObject.SetActive(i <= this.currentHealthPoints);
+        }
+        for (int i = 1; i < 4; i++)
+        {
+            this.healthGameObject.transform.GetChild(i + 10).gameObject.SetActive(i <= this.currentRespawns);
+        }
     }
 
     void endscreen()

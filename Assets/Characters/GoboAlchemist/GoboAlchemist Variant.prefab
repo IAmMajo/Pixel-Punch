@@ -604,3 +604,4 @@ MonoBehaviour:
   totalRespawns: 3
   winscreen: {fileID: 7802562532813727619, guid: 91c736041b610c34ab4f7e5a3dcf7547,
     type: 3}
+  image: {fileID: 21300000, guid: 0efea3472c529524ba1085fa0721a7de, type: 3}
