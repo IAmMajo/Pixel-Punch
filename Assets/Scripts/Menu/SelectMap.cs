@@ -10,6 +10,6 @@ public class SelectMap : MonoBehaviour
     }
 
     public void SetCharacter(){
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 }
