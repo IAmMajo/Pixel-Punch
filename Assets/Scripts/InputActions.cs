@@ -253,7 +253,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""afdfaa15-9681-4b86-abaf-cdf2e820b5c4"",
-                    ""path"": ""<Keyboard>/u"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -264,7 +264,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""6002fd14-e979-4620-bc60-7a7fb789b8ed"",
-                    ""path"": ""<Keyboard>/numpad0"",
+                    ""path"": ""<Keyboard>/rightCtrl"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardArrow"",
@@ -286,7 +286,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""7ca3e9c7-891a-4653-b181-e0b13644820d"",
-                    ""path"": ""<Keyboard>/j"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -297,7 +297,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5dc52afb-5e83-4986-bcc2-85faac80c9ce"",
-                    ""path"": ""<Keyboard>/numpad1"",
+                    ""path"": ""<Keyboard>/rightShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardArrow"",
