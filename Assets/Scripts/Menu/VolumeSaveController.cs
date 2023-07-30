@@ -11,12 +11,12 @@ public class VolumeSaveController : MonoBehaviour
     [SerializeField] private Text volumeTextUI = null;
 
 
-    private void Start(){
+    private void OnEnable(){
         LoadValues();
     }
     public void VolumeSlider(float volume)
     {
-        volumeTextUI.text = volume.ToString("0.0");
+        volumeTextUI.text = volume.ToString("0.00");
 
     }
 
@@ -25,13 +25,13 @@ public class VolumeSaveController : MonoBehaviour
         float volumeValue = volumeSlider.value;
         PlayerPrefs.SetFloat("VolumeValue",volumeValue);
         LoadValues();
+        GameObject.FindGameObjectWithTag("MusicController")?.GetComponent<MusicController>().SetVolume(volumeValue);
     }
 
     void LoadValues()
     {
-        float volumeValue = PlayerPrefs.GetFloat("volumeValue");
-        volumeSlider.value = volumeValue;
-        AudioListener.volume = volumeValue;
+        float volumeValue = PlayerPrefs.GetFloat("VolumeValue");
+        volumeSlider.value = PlayerPrefs.GetFloat("VolumeValue");
     }
 
 }

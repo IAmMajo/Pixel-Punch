@@ -17,6 +17,7 @@ TagManager:
   - LooserScreen
   - Player1
   - Player2
+  - MusicController
   layers:
   - Default
   - TransparentFX
